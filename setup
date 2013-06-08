@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+ln -vfs $PWD/zshrc $HOME/.zshrc
