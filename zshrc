@@ -7,6 +7,8 @@
 #
 ###################################################################
 
+autoload -Uz colors && colors
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -16,12 +18,12 @@ setopt beep extendedglob
 bindkey -v
 export EDITOR=vim
 
-autoload -Uz compinit && compinit
+autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 
-autoload -Uz promptinit && promptinit
-PROMPT="%{$fg[red]%}%B%n@%M %{$reset_color%}%#%b"
-autoload -Uz colors && colors
+
+autoload -U promptinit && promptinit
+PROMPT="%{$fg[red]%}%B%n@%M %{$reset_color%}%# %b"
 
 setopt completealiases
 ###ALIASES####
