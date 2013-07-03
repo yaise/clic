@@ -7,6 +7,10 @@
 #
 ###################################################################
 
+if [ -r $HOME/.zprofile ];then
+	source $HOME/.zprofile
+fi
+
 autoload -Uz colors && colors
 
 HISTFILE=~/.histfile
@@ -15,18 +19,16 @@ SAVEHIST=1000
 setopt append_history share_history
 setopt beep extendedglob
 
-bindkey -v
 export EDITOR=vim
 
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
+setopt completealiases
 
 
 autoload -U promptinit && promptinit
-PROMPT="%{$fg[red]%}%B%n@%M %{$reset_color%}%# %b"
-
-setopt completealiases
-###ALIASES####
+PROMPT="%{$fg[red]%}%B%~ %{$reset_color%}%# %b"
+RPROMPT="%{$fg[green]%}%n@%M%{$reset_color%}"
 
 #GREP
 alias grep='grep -n --color=auto' #color in grep
