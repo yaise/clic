@@ -27,15 +27,16 @@ setopt completealiases
 
 
 autoload -U promptinit && promptinit
-PROMPT="%{$fg[red]%}%B%~ %{$reset_color%}%# %b"
+PROMPT="%{$fg_no_bold[yellow]%}[%?]%{$reset_color%}%{$fg[red]%}%B%~ %{$reset_color%}%# %b"
 RPROMPT="%{$fg[green]%}%n@%M%{$reset_color%}"
 
+alias e='vim'
 #GREP
 alias grep='grep -n --color=auto' #color in grep
 
 #LS
-alias ls='ls --color=auto -F'	#color in ls, classify
-alias ll='ls -lhrta'	#show details in human readable format,sort(desc by time),include hidden
+alias ls='ls --color=auto -aF'	#color in ls, classify, include hidden
+alias ll='ls -lhrt'	#show details in human readable format,sort(desc by time)
 eval $(dircolors -b)	#evaluate if something is broken
 
 #DISK
