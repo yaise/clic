@@ -1,2 +1,3 @@
 #!/usr/bin/env sh
 ln -vfs $PWD/zshrc $HOME/.zshrc
+ln -vfs $PWD/tmux.conf $HOME/.tmux.conf

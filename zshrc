@@ -54,7 +54,8 @@ alias -g ...='cd ../../'
 alias -g grep='grep -n --color=auto' #color in grep
 
 #LS
-alias -g ls='ls --color=auto -aF'	#color in ls, classify, include hidden
+alias -g ls='ls --color=auto -F'	#color in ls, classify
+alias -g la='ls -a'					#hidden files
 alias -g ll='ls -lhrt'	#show details in human readable format,sort(desc by time)
 eval $(dircolors -b)	#evaluate if something is broken
 
