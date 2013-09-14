@@ -7,14 +7,14 @@
 #
 ###################################################################
 
-if [ -r $HOME/.zprofile ];then
-	source $HOME/.zprofile
-fi
+os=$(uname)
+
+[[ -r $HOME/.zprofile ]] &&	source $HOME/.zprofile
 
 autoload -Uz colors && colors
 setopt autocd beep extendedglob
 
-HISTFILE=~/.histfile
+HISTFILE=$HOME/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt append_history share_history
@@ -51,20 +51,26 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 alias e='vim'
 alias m='man'
 alias -g ...='cd ../../'
-alias -g grep='grep -n --color=auto' #color in grep
+alias -g grep='grep -n --color=auto'
 
-#LS
-alias -g ls='ls --color=auto -F'	#color in ls, classify
+[[ $os == "Linux"  ]] && alias -g ls='ls --color=auto -F'	#color in ls, classify
 alias -g la='ls -a'					#hidden files
 alias -g ll='ls -lhrt'	#show details in human readable format,sort(desc by time)
-eval $(dircolors -b)	#evaluate if something is broken
 
-#DISK
+[[ $os == "Linux" ]] && eval $(dircolors -b)	#evaluate if something is broken
+
 alias -g df='df -h'	#human readable
 alias -g du='du -c -h'	#grand total, human readable
 
 #SAFETY
-alias rm='rm -I'
+[[ $os == "Linux"  ]] && alias rm='rm -I'
 alias -g chown='chown --preserve-root'
 alias -g chmod='chmod --preserve-root'
 alias -g chgrp='chgrp --preserve-root'
+
+# Source any files that are available in $HOME/rc
+if [[ -d $HOME/rc ]]; then 
+	for rc in $HOME/rc/*.rc; do
+		source $rc
+	done
+fi
