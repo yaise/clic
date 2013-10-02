@@ -1,5 +1,4 @@
-###################################################################
-#
+################################################################### #
 # The following sources were of great help in writing this
 #
 # - https://github.com/grml/grml-etc-core/blob/master/etc/zsh/zshrc
@@ -18,6 +17,7 @@ HISTFILE=$HOME/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt append_history share_history
+bindkey	"^R"	history-incremental-search-backward
 
 #COMPLETION
 autoload -U compinit && compinit
@@ -70,7 +70,9 @@ alias -g chgrp='chgrp --preserve-root'
 
 # Source any files that are available in $HOME/rc
 if [[ -d $HOME/rc ]]; then 
-	for rc in $HOME/rc/*.rc; do
+	for file in $HOME/rc/*.rc; do
+		rc=$file
+		[[ -L $file ]] && rc=$(readlink -f $file)
 		source $rc
 	done
 fi
