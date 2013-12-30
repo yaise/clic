@@ -3,3 +3,4 @@ ln -vfs $PWD/zshrc $HOME/.zshrc
 ln -vfs $PWD/tmux.conf $HOME/.tmux.conf
 ln -vfs $PWD/Xresources $HOME/.Xresources
 ln -vfs $PWD/xinitrc $HOME/.xinitrc
+ln -vfs $PWD/compton.conf $HOME/.compton.conf

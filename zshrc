@@ -9,6 +9,7 @@
 os=$(uname)
 
 [[ -r $HOME/.zprofile ]] &&	source $HOME/.zprofile
+autoload zkbd
 
 autoload -Uz colors && colors
 setopt autocd beep extendedglob
@@ -56,9 +57,7 @@ alias -g grep='grep -n --color=auto'
 [[ $os == "Linux"  ]] && alias -g ls='ls --color=auto -F'	#color in ls, classify
 alias -g la='ls -a'					#hidden files
 alias -g ll='ls -lhrt'	#show details in human readable format,sort(desc by time)
-
 [[ $os == "Linux" ]] && eval $(dircolors -b)	#evaluate if something is broken
-
 alias -g df='df -h'	#human readable
 alias -g du='du -c -h'	#grand total, human readable
 
@@ -70,9 +69,13 @@ alias -g chgrp='chgrp --preserve-root'
 
 # Source any files that are available in $HOME/rc
 if [[ -d $HOME/rc ]]; then 
-	for file in $HOME/rc/*.rc; do
+	for file in $HOME/rc/*; do
 		rc=$file
 		[[ -L $file ]] && rc=$(readlink -f $file)
 		source $rc
 	done
 fi
+
+[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
+[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
