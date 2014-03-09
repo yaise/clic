@@ -10,5 +10,5 @@ fi
 readonly xresource=$HOME/.Xresources
 [[ -e $xresource ]] && xrdb -merge $xresource
 
-compton --config $HOME/.compton.conf &
-startxfce4
+[[ -z $(command -v compton >/dev/null 2>&1) ]] && compton --config $HOME/.compton.conf &
+[[ -z $(command -v startxfce4 >/dev/null 2>&1) ]] && startxfce4
