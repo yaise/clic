@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 ln -vfs $PWD/zshrc $HOME/.zshrc
 ln -vfs $PWD/tmux.conf $HOME/.tmux.conf
 if [ $(uname) == "Linux" ]; then 
