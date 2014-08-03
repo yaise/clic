@@ -53,7 +53,7 @@ precmd() {
 }
 PROMPT="${yellow}[%?]${red}%~ ${white}%# ${reset}"
 #RPROMPT="%{$fg[green]%}%n@%M%{$reset_color%}"
-RPROMPT='${vcs_info_msg_0_}'
+RPROMPT='${vcs_info_msg_0_}${reset}'
 
 #SET VARIABLES
 export PAGER=less
