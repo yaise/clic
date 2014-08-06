@@ -12,6 +12,11 @@ os=$(uname)
 autoload zkbd
 
 autoload -Uz colors && colors
+green="%{$fg_bold[green]%}"
+white="%{$fg_bold[white]%}"
+red="%{$fg_bold[red]%}"
+yellow="%{$fg_bold[yellow]%}"
+reset="%{$reset_color%}"
 setopt autocd beep extendedglob
 
 HISTFILE=$HOME/.histfile
@@ -33,9 +38,22 @@ zstyle ':completion:*:options'  description 'yes'
 zstyle ':completion:*:warnings' format $'%{\e[0;31m%}No matches for:%{\e[0m%} %d'
 
 #PROMPT
+autoload -Uz vcs_info
 autoload -U promptinit && promptinit
-PROMPT="%{$fg_no_bold[yellow]%}[%?]%{$reset_color%}%{$fg[red]%}%B%~ %{$reset_color%}%# %b"
-RPROMPT="%{$fg[green]%}%n@%M%{$reset_color%}"
+setopt PROMPT_SUBST
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git*' stagedstr "${green}S${reset}"
+zstyle ':vcs_info:git*' unstagedstr "${red}U${reset}"
+zstyle ':vcs_info:git*' formats "${white}[*${green}%b${white} %c%u %m${white}]"
+#zstyle ':vcs_info:git*+set-message:*' hooks remoteInfo
+#+vi-remoteInfo() {}
+precmd() {
+    vcs_info
+}
+PROMPT="${yellow}[%?]${red}%~ ${white}%# ${reset}"
+#RPROMPT="%{$fg[green]%}%n@%M%{$reset_color%}"
+RPROMPT='${vcs_info_msg_0_}${reset}'
 
 #SET VARIABLES
 export PAGER=less
