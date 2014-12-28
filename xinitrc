@@ -11,4 +11,4 @@ readonly xresource=$HOME/.Xresources
 [[ -e $xresource ]] && xrdb -merge $xresource
 
 [[ -z $(command -v compton >/dev/null 2>&1) ]] && compton --config $HOME/.compton.conf &
-[[ -z $(command -v startxfce4 >/dev/null 2>&1) ]] && startxfce4
+exec i3 -V >> ~/.i3/i3log 2>&1
