@@ -5,7 +5,6 @@
 # - https://wiki.archlinux.org/index.php/Zsh
 #
 ###################################################################
-
 os=$(uname)
 
 [[ -r $HOME/.zprofile ]] &&	source $HOME/.zprofile
@@ -88,7 +87,7 @@ alias -g chgrp='chgrp --preserve-root'
 if [[ -d $HOME/rc ]]; then 
 	for file in $HOME/rc/*; do
 		rc=$file
-		[[ -L $file ]] && rc=$(readlink -f $file)
+		[[ -L $file ]] && rc=$(readlink $file)
 		source $rc
 	done
 fi
