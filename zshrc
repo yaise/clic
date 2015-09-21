@@ -11,10 +11,10 @@ os=$(uname)
 autoload zkbd
 
 autoload -Uz colors && colors
-green="%{$fg_bold[green]%}"
-white="%{$fg_bold[white]%}"
+green="%{$fg[green]%}"
+white="%{$fg[white]%}"
 red="%{$fg_bold[red]%}"
-yellow="%{$fg_bold[yellow]%}"
+yellow="%{$fg[yellow]%}"
 reset="%{$reset_color%}"
 setopt autocd beep extendedglob
 
@@ -51,7 +51,7 @@ precmd() {
     vcs_info
 }
 PROMPT='${yellow}[%?]${vcs_info_msg_0_}${red}%~ ${white}%# ${reset}'
-RPROMPT="%{$fg[green]%}%n@%M%{$reset_color%}"
+RPROMPT="${green}%n@%M${reset}"
 
 #SET VARIABLES
 export PAGER=less
