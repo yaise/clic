@@ -84,7 +84,7 @@ alias -g chmod='chmod --preserve-root'
 alias -g chgrp='chgrp --preserve-root'
 
 # Source any files that are available in $HOME/rc
-if [[ -d $HOME/rc ]]; then 
+if [[ -d $HOME/rc ]] && [[ $(ls -A $HOME/rc) ]]; then 
 	for file in $HOME/rc/*; do
 		rc=$file
 		[[ -L $file ]] && rc=$(readlink $file)
