@@ -79,9 +79,6 @@ alias -g du='du -c -h'	#grand total, human readable
 
 #SAFETY
 [[ $os == "Linux"  ]] && alias rm='rm -I'
-alias -g chown='chown --preserve-root'
-alias -g chmod='chmod --preserve-root'
-alias -g chgrp='chgrp --preserve-root'
 
 # Source any files that are available in $HOME/rc
 if [[ -d $HOME/rc ]] && [[ $(ls -A $HOME/rc) ]]; then 
@@ -95,3 +92,10 @@ fi
 [[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
 [[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
 [[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
+
+#GIT
+alias -g gl='git log --graph --decorate --date=short --pretty=format:"%C(auto)%h %Cgreen%aN %Cblue%ad %Creset%f %C(auto)%d"'
+alias -g gs='git status'
+alias -g gplr='git pull --rebase'
+alias -g gp='git push'
+alias -g gf='git fetch -p'
