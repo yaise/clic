@@ -52,7 +52,7 @@ zstyle ':vcs_info:git*' formats "${white}[*${green}%b${white} %c%u %m${white}]"
 precmd() {
     vcs_info
 }
-PROMPT='${white}%WT%*${blue}%n@%M${yellow}[%?]${vcs_info_msg_0_}${red}%~ ${white}%# ${reset}'
+PROMPT='${white}%W-%*${blue}%n@%M${yellow}[%?]${vcs_info_msg_0_}${red}%~ ${white}%# ${reset}'
 
 #SET VARIABLES
 export PAGER=less
