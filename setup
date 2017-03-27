@@ -1,4 +1,5 @@
 #!/bin/bash
+chsh -s $(which zsh)
 ln -vfs $PWD/zshrc $HOME/.zshrc
 ln -vfs $PWD/tmux.conf $HOME/.tmux.conf
 if [ $(uname) == "Linux" ]; then 

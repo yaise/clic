@@ -15,6 +15,8 @@ green="%{$fg[green]%}"
 white="%{$fg[white]%}"
 red="%{$fg_bold[red]%}"
 yellow="%{$fg[yellow]%}"
+blue="%{$fg[blue]%}"
+cyan="%{$fg[cyan]%}"
 reset="%{$reset_color%}"
 setopt autocd beep extendedglob
 
@@ -50,8 +52,7 @@ zstyle ':vcs_info:git*' formats "${white}[*${green}%b${white} %c%u %m${white}]"
 precmd() {
     vcs_info
 }
-PROMPT='${yellow}[%?]${vcs_info_msg_0_}${red}%~ ${white}%# ${reset}'
-RPROMPT="${green}%n@%M${reset}"
+PROMPT='${white}%WT%*${blue}%n@%M${yellow}[%?]${vcs_info_msg_0_}${red}%~ ${white}%# ${reset}'
 
 #SET VARIABLES
 export PAGER=less
