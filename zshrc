@@ -95,8 +95,8 @@ fi
 [[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
 
 #GIT
-alias -g gl='git log --graph --decorate --date=short --pretty=format:"%C(auto)%h %Cgreen%aN %Cblue%ad %Creset%f %C(auto)%d"'
+alias -g gl='git log --graph --decorate --date=short --pretty=format:"%C(auto)%h %Cgreen%aN %ad %Cblue%cn %ci %Creset%f %C(auto)%d"'
 alias -g gs='git status'
 alias -g gplr='git pull --rebase'
 alias -g gp='git push'
-alias -g gf='git fetch -p'
+alias -g gf='git fetch --prune --tags'
