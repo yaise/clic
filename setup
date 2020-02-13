@@ -1,9 +1,32 @@
-#!/bin/bash
-chsh -s $(which zsh)
-ln -vfs $PWD/zshrc $HOME/.zshrc
-ln -vfs $PWD/tmux.conf $HOME/.tmux.conf
-if [ $(uname) == "Linux" ]; then 
-	ln -vfs $PWD/Xresources $HOME/.Xresources
-	ln -vfs $PWD/xinitrc $HOME/.xinitrc
-	[[ -z $(command -v compton >/dev/null 2>&1) ]] && ln -vfs $PWD/compton.conf $HOME/.compton.conf
-fi
+#!/bin/sh
+set -e
+
+function announce() {
+    echo "\x1B[1;32mINFO:$@ \x1B[0m"
+}
+
+function warn() {
+    echo "\x1B[1;33mWARN:$@ \x1B[0m"
+}
+
+function setup_zsh(){
+    if command -v zsh &>/dev/null; then
+        [ ${SHELL##*/} = "zsh" ] || {
+            announce "Changing default shell to zsh";  chsh -s $(which zsh)
+        }
+        ln -vfs $PWD/zshrc $HOME/.zshrc
+    else
+        warn "zsh not installed!"
+    fi
+}
+
+function setup_tmux() {
+    if command -v tmux &>/dev/null; then
+        ln -vfs $PWD/tmux.conf $HOME/.tmux.conf
+    else
+        warn "tmux not installed!"
+    fi
+}
+
+setup_zsh
+setup_tmux

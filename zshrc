@@ -52,7 +52,7 @@ zstyle ':vcs_info:git*' formats "${white}[*${green}%b${white} %c%u %m${white}]"
 precmd() {
     vcs_info
 }
-PROMPT='${white}%W-%*${blue}%n@%M${yellow}[%?]${vcs_info_msg_0_}${red}%~ ${white}%# ${reset}'
+PROMPT='${yellow}[%?]${vcs_info_msg_0_}${red}%~ ${white}%# ${reset}'
 
 #SET VARIABLES
 export PAGER=less
@@ -69,7 +69,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 alias e='vim'
 alias m='man'
 alias -g ...='cd ../../'
-alias -g grep='grep -n --color=auto'
+alias -g grep='grep --color=auto'
 
 [[ $os == "Linux"  ]] && alias -g ls='ls --color=auto -F'	#color in ls, classify
 alias -g la='ls -a'					#hidden files
